@@ -1,21 +1,27 @@
 $(document).ready(function(){
 
-	$("#createForm").click(function(){
+	$("form#data").submit(function(e){
+
+		e.preventDefault();
+		
+		let formData = new FormData(this);
 
 		let name = $(".name").val();
+		let image = $("#image")[0].files;
 
-		if(name == ""){
-			alert("Name Field is Empty!!");
+		if(name == "" || image.length == 0){
+
+			alert("Name or Image Field should not Empty!!");
 			return false;
 		}
 
 		$.ajax({
 			 type: "POST",
 			 url: "AccountCreateController.php",
-			 data: {
-			 	name: name,
-			 },
+			 data: formData,
 			 cache: false,
+			 contentType: false,
+        	 processData: false,
 			 success: function(data) {
 			 	$(".name").val("");
 			 	alert(data);			 	
@@ -23,9 +29,7 @@ $(document).ready(function(){
 			 error: function(xhr, status, error) {
 			 	console.error(xhr);
 			 	}
-			 });
-
-		
+			 });		
 
 	});
 

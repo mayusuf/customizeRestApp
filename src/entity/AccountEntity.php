@@ -3,11 +3,12 @@
 namespace Api\Controller;
 
 include('../db/MysqlDatabaseConn.php');
-
+include('../api/SecurityTrait.php');
 
 final class AccountEntity 
 {
-	
+	use SecurityTrait;
+
 	private $data = [];
 	private $table = "accounts";
 	private $sql;
@@ -18,7 +19,8 @@ final class AccountEntity
 	
 	public function insert($request){			
 		
-		$this->sql = "Insert into $this->table values('".$request['name']."')";
+		
+		$this->sql = "Insert into $this->table values('".$this->escapeSQLinjection($request['name'])."','".$this->escapeSQLinjection($request['image'])."')";
 
 		if(MysqlDatabaseConn::$conn->query($this->sql) === TRUE)
 			return "New record create successfully";
