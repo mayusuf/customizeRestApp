@@ -2,14 +2,20 @@
 
 namespace Api\Controller;
 
+include('BaseController.php');
 include('FileUploadController.php');
 include('../entity/AccountEntity.php');
 
 
-final class AccountCreateController 
+final class AccountCreateController extends BaseController
 {
 	
 	private $data = [];
+
+	public function index(){
+		$this->viewFile = 'create_form';
+		echo $this->view($this->data);
+	}
 
 	public function create($request){
 

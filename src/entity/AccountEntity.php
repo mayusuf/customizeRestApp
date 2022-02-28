@@ -32,6 +32,20 @@ final class AccountEntity
 		// }
 
 	}
+
+	public function findAll(){			
+		
+		
+		$this->sql = "Select * From $this->table";
+
+		if($result = MysqlDatabaseConn::$conn->query($this->sql)){
+			return $result->fetch_all(MYSQLI_ASSOC);
+		}
+
+			
+
+	}
+
 }
 
  

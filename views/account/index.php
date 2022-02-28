@@ -4,23 +4,25 @@
 	<title><?php echo $title; ?></title>
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<script type="text/javascript" src="../../js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="../../js/form_handler.js"></script>
+	<script type="text/javascript" src="../../js/load_data.js"></script>
 </head>
 <body>
 	<div class="container">
 		
 			<h1><?php echo $title; ?></h1>
-			<form id="data" method="post" enctype="multipart/form-data">
-				<div class="formInput">
-					Name: <input class="name" type="text" name="name" /> 
+			<div class="accounts">
+				<table>
+					<tr><th>Name</th><th>Image</th></tr>
+				</table>
+				<table id="tableContent">
+									
+					<tr><td>Yusuf</td><td><img src="../../uploads/images/cv_pic.jpg" width="75px" height="75px" /></td></tr>						
+				
+				</table>
+				<div >
+					<button class="loadData">Load Data</button>
 				</div>
-				<div class="formInput">
-					Image: <input id="image" type="file" name="image" /> 
-				</div>
-				<div class="formInput">
-					<button>Submit</button>
-				</div>
-			</form>
+			</div>
 		
 	</div>
 </body>
