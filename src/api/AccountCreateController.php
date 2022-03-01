@@ -4,13 +4,19 @@ namespace Api\Controller;
 
 include('BaseController.php');
 include('FileUploadController.php');
-include('../entity/AccountEntity.php');
+include('../Entity/AccountEntity.php');
 
 
 final class AccountCreateController extends BaseController
 {
 	
 	private $data = [];
+
+	function __construct()
+	{
+		$this->data['title'] = "Create of Account";
+		$this->viewSubFolder = 'account';
+	}
 
 	public function index(){
 		$this->viewFile = 'create_form';
@@ -31,17 +37,22 @@ final class AccountCreateController extends BaseController
 	
 }
 
- $request = array();
+$request = array();
 
- array_push($request,$_POST,$_FILES);
+if($_POST && $_FILES)
+	array_push($request,$_POST,$_FILES);
 
  
   // print_r($request);
   //  exit();
 
- if(count($request) > 0){
- 	$obj = new AccountCreateController();
+$obj = new AccountCreateController();
+
+if(count($request) > 0){
+ 	
  	echo $obj->create($request);
+}else{
+	$obj->index();
 }
  
 ?>

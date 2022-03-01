@@ -1,14 +1,13 @@
 $(document).ready(function(){
 	
 	$(".loadData").click(function(){
-		alert("kldj");
+		
 		$.ajax({
 			 type: "GET",
 			 url: "AccountController.php",
 			 data: {action: 'getList'},
 			 success: function(data) {
-			 	let json = JSON.parse(data);
-			 	alert(json.length);
+			 	let json = JSON.parse(data);			 	
 			 	let html = "";
 			 	for(let i = 0; i < json.length; i++) {  
 				    
@@ -17,7 +16,7 @@ $(document).ready(function(){
 				    `</td></tr>`;
 
 				}
-				// console.log(html);
+				
 				$("#tableContent tbody").html(html);		 	
 			 },
 			 error: function(xhr, status, error) {

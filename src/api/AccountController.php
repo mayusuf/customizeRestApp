@@ -4,7 +4,7 @@ namespace Api\Controller;
 
 // use Api\Controller\BaseController;
 include('BaseController.php');
-include('../entity/AccountEntity.php');
+include('../Entity/AccountEntity.php');
 
 final class AccountController extends BaseController
 {

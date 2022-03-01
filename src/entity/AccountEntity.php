@@ -2,8 +2,8 @@
 
 namespace Api\Controller;
 
-include('../db/MysqlDatabaseConn.php');
-include('../api/SecurityTrait.php');
+include('../Db/MysqlDatabaseConn.php');
+include('../Api/SecurityTrait.php');
 
 final class AccountEntity 
 {
